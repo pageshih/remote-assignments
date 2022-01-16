@@ -98,7 +98,7 @@ button:hover{
     width: 50%;
     background-color: #fff;
     border: 1px solid black;
-    display: flex;
+    display: none;
     justify-content: space-between;
 }
 
