@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sum</title>
+</head>
+<body>
+    <h1 id='sum'></h1>
+    <form>
+        <label>Please enter a number:</label>
+        <input type="text" name="number">
+        <button type="button">send</button>
+    </form>
+    <script>
+        let get = new XMLHttpRequest(); 
+        const submit = document.querySelector('form button');
+        const input = document.querySelector('input');
+        get.onreadystatechange = ()=>{
+            if(get.readyState === 4){
+		        document.querySelector('#sum').innerHTML = `result: ${get.responseText}`;
+	        }
+        };
+        submit.addEventListener('click',(e)=>{
+            e.preventDefault();
+            sendRequest();
+        });
+        input.addEventListener('keydown',(e)=>{
+            if(e.keyCode === 13){
+                e.preventDefault();
+                sendRequest();
+            }
+        });
+
+        function sendRequest(){
+            let number = input.value;
+            if(number){
+                get.open('GET',`/getData?number=${number}`);
+                get.send();
+            }else{
+                alert('Please enter a number');
+            }
+        }
+
+    </script>
+</body>
+</html>
