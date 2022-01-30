@@ -1,5 +1,3 @@
-const { doc } = require("prettier");
-
 function ajax(src, callback){
     // your code here
     let xhr = new XMLHttpRequest();
